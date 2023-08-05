@@ -1,3 +1,4 @@
+<!-- 메인화면 페이지 -->
 <!D0CTYPE html>
 {% load static %}
 <html lang="ko">
@@ -7,8 +8,11 @@
     <link rel="stylesheet" href="{% static 'one_pages/bootstrap/bootstrap.min.css' %}" media="screen">
 </head>
 <div class="container">
+
 <body>
+    <!-- 네비게이션바 -->
  <nav class="navbar navbar-expand-lg bg-light">
+
   <div class="container-fluid">
     <a class="navbar-brand" href="/">사이트 이름</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -17,7 +21,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">강의</a>
+          <a class="nav-link active" aria-current="page" href="/about_me/">강의</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">소통공간</a>
@@ -37,13 +41,37 @@
           <a class="nav-link disabled">Disabled</a>
         </li>
       </ul>
-      <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
+<button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  로그인
+</button>
+               <!-- 네비게이션바 -->
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">사이트 <이름></이름></h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+            <div class="col-md-6">
+                <button tpye="button" class="btn btn-outline-dark">구글 계정으로 접속하기</button>
+            </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
     </div>
   </div>
 </nav>
+<!-- Modal -->
+
+ <!-- 캐러셀 -->
 <nav>
 <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
   <div class="carousel-indicators">
@@ -51,7 +79,7 @@
     <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
     <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
   </div>
-  <div class="carousel-inner">
+  <div class="carousel-inner my-4">
     <div class="carousel-item active" data-bs-interval="10000">
       <img src="{% static 'IMG/map1.jpg' %}" class="d-block w-105" alt="...">
     </div>
@@ -71,15 +99,17 @@
     <span class="visually-hidden">Next</span>
   </button>
 </div>
-    <p><a href="/">대문</a><br>
-    <a href="/about_me/">자유게시판</a>
+    <!-- 캐러셀 -->
+    <!-- 본문 -->
 </nav>
- <body style="text-align: center;">
- <p><h1>공사중</h1><br>
-     <h2>공사중</h2></p>
+ <p><h3>처음 오셨다구요?!</h3><br>
+     모르시겠으면 우선 3가지중에서부터 시작해봐요</h2><br>
+<div class="container">
+ <button type="button" class="btm_image" id="img_btn"><img src="{% static 'IMG/computer.jpg' %}" class="rounded float-start" alt="..."></button>
+  <button type="button" class="btm_image" id="img_btn"><img src="{% static 'IMG/cellphone.jpg' %}" class="rounded mx-auto d-block" alt="..."></button>
+  <button type="button" class="btm_image" id="img_btn"><img src="{% static 'IMG/kiosk.jpg' %}" class="rounded float-end" alt="..."></button>
+</div>
  </body>
-<h1>대문</h1>
-<h3>미완성</h3>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
         integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
         crossorigin="anonymous"></script>
@@ -87,5 +117,6 @@
         integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V"
         crossorigin="anonymous"></script>
 </body>
+    <!-- 본문 -->
 </div>
 </html>
