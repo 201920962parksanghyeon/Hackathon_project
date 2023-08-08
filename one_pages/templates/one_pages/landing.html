@@ -1,11 +1,13 @@
 <!-- 메인화면 페이지 -->
 <!D0CTYPE html>
 {% load static %}
+{% load socialaccount %}
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>home2</title>
+    <title>대문</title>
     <link rel="stylesheet" href="{% static 'one_pages/bootstrap/bootstrap.min.css' %}" media="screen">
+    <script src="https://kit.fontawesome.com/7c6eec18eb.js" crossorigin="anonymous"></script>
 </head>
 <div class="container">
 
@@ -37,26 +39,41 @@
             <li><a class="dropdown-item" href="/about_me/">자유 게시판</a></li>
           </ul>
         </li>
-        <li class="nav-item">
-          <a class="nav-link disabled">Disabled</a>
-        </li>
       </ul>
+      <ul class="navbar-nav ml-auto">
+          {% if user.is_authenticated %}
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            {{ user.username }}
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="/accounts/logout/">Log out</a></li>
+          </ul>
+        </li>
+       {% else %}
 <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#exampleModal">
-  로그인
+  로그인&회원가입
 </button>
+  {%  endif %}
+      </ul>
+
                <!-- 네비게이션바 -->
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">사이트 <이름></이름></h1>
+        <h1 class="modal-title fs-5" id="exampleModalLabel"><i class="fa-solid fa-right-to-bracket"></i>&nbsp 사이트 이름</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <div class="row">
             <div class="col-md-6">
-                <button tpye="button" class="btn btn-outline-dark">구글 계정으로 접속하기</button>
+                <a role="button" class="btn btn-outline-dark" href="{%  provider_login_url 'google' %}"><i class="fa-brands fa-google"></i>&nbsp&nbsp 구글로 로그인하기</a>
+                <a role="button" class="btn btn-outline-dark" href="/accounts/login/"><i class="fa-solid fa-user"></i>&nbsp&nbsp 로그인하기</a>
+            </div>
+            <div class="col-md-6">
+                <a role="button" class="btn btn-outline-dark" href="/accounts/signup/"><i class="fa-solid fa-user"></i>&nbsp&nbsp 회원가입 하기</a>
             </div>
         </div>
       </div>
@@ -103,13 +120,12 @@
     <!-- 본문 -->
 </nav>
  <p><h3>처음 오셨다구요?!</h3><br>
-     모르시겠으면 우선 3가지중에서부터 시작해봐요</h2><br>
+    <h3> 모르시겠으면 우선 3가지중에서부터 시작해봐요</h3><br>
 <div class="container">
  <button type="button" class="btm_image" id="img_btn"><img src="{% static 'IMG/computer.jpg' %}" class="rounded float-start" alt="..."></button>
   <button type="button" class="btm_image" id="img_btn"><img src="{% static 'IMG/cellphone.jpg' %}" class="rounded mx-auto d-block" alt="..."></button>
   <button type="button" class="btm_image" id="img_btn"><img src="{% static 'IMG/kiosk.jpg' %}" class="rounded float-end" alt="..."></button>
 </div>
- </body>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
         integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
         crossorigin="anonymous"></script>
