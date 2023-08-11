@@ -39,12 +39,15 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "home",
     "one_pages",
+<<<<<<< Updated upstream
     "bootstrap4",
     "django.contrib.sites",
     "allauth",
     "allauth.account",
     "allauth.socialaccount",
     "allauth.socialaccount.providers.google",
+=======
+>>>>>>> Stashed changes
 ]
 
 MIDDLEWARE = [
