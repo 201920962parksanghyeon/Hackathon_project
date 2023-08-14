@@ -14,6 +14,8 @@ class PostCreate(LoginRequiredMixin, CreateView):
     model = Post
     fields = ['title', 'content']
 
+
+
     def form_valid(self, form):
         current_user = self.request.user
         if current_user.is_authenticated:
