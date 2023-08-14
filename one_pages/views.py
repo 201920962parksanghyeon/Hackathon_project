@@ -8,6 +8,6 @@ def landing(request):
 def about_me(request):
     return render(
         request,
-        'one_pages/about_me.html'
+        'one_pages/class.html'
     )
 # Create your views here.
