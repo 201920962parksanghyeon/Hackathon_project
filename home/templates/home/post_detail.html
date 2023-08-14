@@ -1,18 +1,15 @@
-<!-- 메인화면 페이지 -->
 <!D0CTYPE html>
 {% load static %}
 {% load socialaccount %}
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>대문</title>
-    <link rel="stylesheet" href="{% static 'one_pages/bootstrap/bootstrap.min.css' %}" media="screen">
-    <script src="https://kit.fontawesome.com/7c6eec18eb.js" crossorigin="anonymous"></script>
+    <title>{{ post.title }} - home</title>
+    <link rel="stylesheet" href="{% static 'home/bootstrap/bootstrap.min.css' %}" media="screen">
 </head>
 <div class="container">
 
 <body>
-    <!-- 네비게이션바 -->
  <nav class="navbar navbar-expand-lg bg-light">
 
   <div class="container-fluid">
@@ -86,17 +83,14 @@
     </div>
   </div>
 </nav>
-<!-- Modal -->
+     <hr/>
+     <h1>{{ post.title }}</h1>
+     <h4>{{ post.created_at }}</h4>
+     <p>{{ post.content  }}</p>
+     <hr/>
+     <h3>댓글 불러올 창</h3>
 
- <!-- 캐러셀 -->
-    <!-- 본문 -->
-      {% for p in posts %}
-    <hr/>
-    <h2>{{ p.title }}</h2>
-    <h4>{{ p.created_at }}</h4>
-    <p>{{ p.content  }}</p>
-  {% endfor %}
-</nav>
+
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
         integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
         crossorigin="anonymous"></script>
@@ -104,7 +98,5 @@
         integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V"
         crossorigin="anonymous"></script>
 </body>
-
-    <!-- 본문 -->
 </div>
 </html>

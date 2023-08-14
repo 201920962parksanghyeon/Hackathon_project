@@ -9,4 +9,9 @@ class Post(models.Model): #메인화면 포스트 모델
 
     def __str__(self): #포스트 제목, 번호 보여주기
        return f'[{self.pk}]{self.title}'
+
+    def get_absolute_url(self):
+        return f'/home/{self.pk}/'
+
+
 # Create your models here.
