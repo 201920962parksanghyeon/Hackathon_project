@@ -4,7 +4,7 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>{{ post.title }} - home</title>
+    <title>포스트 작성창</title>
     <link rel="stylesheet" href="{% static 'home/bootstrap/bootstrap.min.css' %}" media="screen">
 </head>
 <div class="container">
@@ -48,11 +48,9 @@
           </ul>
         </li>
        {% else %}
-<button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#exampleModal">
-  로그인&회원가입
+<button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#exampleModal">로그인&회원가입
 </button>
-  {%  endif %}
-      </ul>
+  {%  endif %}</ul>
 
                <!-- 네비게이션바 -->
 <!-- Modal -->
@@ -83,51 +81,15 @@
     </div>
   </div>
 </nav>
-     <hr/>
-         <!-- Page content-->
-        <div class="container mt-5">
-            <div class="row">
-                <div class="col-lg-8">
-                    <!-- Post content-->
-                    <article>
-                        <!-- Post header-->
-                        <header class="mb-4">
-                            <!-- Post title-->
-                            <h1 class="fw-bolder mb-1">{{ post.title }}</h1>
-                            <!-- Post meta content-->
-                            <div class="text-muted fst-italic mb-2">작성일: {{ post.created_at }}
-                            | 작성자: <a href="#"> {{ post.author | upper }}</a></div>
-                        </header>
-                        <!-- Post content-->
-                        <section class="mb-5">
-                            <p> {{ post.content }}</p>
-                        </section>
-                    </article>
-                </div>
-                <!-- Side widgets-->
-                <div class="col-lg-4">
-                    <!-- Search widget-->
-                    <div class="card mb-4">
-                        <div class="card-header">Search</div>
-                        <div class="card-body">
-                            <div class="input-group">
-                                <input class="form-control" type="text" placeholder="Enter search term..." aria-label="Enter search term..." aria-describedby="button-search" />
-                                <button class="btn btn-primary" id="button-search" type="button">Go!</button>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Side widget-->
-                    <div class="card mb-4">
-                        <div class="card-header">도움말</div>
-                        <div class="card-body"><h4>자세히 보기를 누르시면 글을 더 자세히 볼 수 있습니다</h4></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Footer-->
-        <footer class="py-5 bg-dark">
-            <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2023</p></div>
-        </footer>
+ <!-- Modal -->>
+<h1> 포스트 작성하기 </h1>
+ <hr/>
+ <form method="post" enctype="multipart/form-data">{% csrf_token %}
+    <table>
+      {{ form }}
+    </table>
+    <button type="submit" class="btn btn-primary float-xl-end">작성 완료하기</button>
+ </form>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
         integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
         crossorigin="anonymous"></script>

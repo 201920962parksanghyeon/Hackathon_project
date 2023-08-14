@@ -4,7 +4,7 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>home</title>
+    <title>post_list</title>
     <link rel="stylesheet" href="{% static 'home/bootstrap/bootstrap.min.css' %}" media="screen">
 </head>
 <div class="container">
@@ -48,11 +48,9 @@
           </ul>
         </li>
        {% else %}
-<button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#exampleModal">
-  로그인&회원가입
+<button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#exampleModal">로그인&회원가입
 </button>
-  {%  endif %}
-      </ul>
+  {%  endif %}</ul>
 
                <!-- 네비게이션바 -->
 <!-- Modal -->
@@ -83,14 +81,82 @@
     </div>
   </div>
 </nav>
-<!-- Modal -->>
+ <!-- Modal -->>
+        <!-- Page header with logo and tagline-->
+        <header class="py-5 bg-light border-bottom mb-4">
+            <div class="container">
+                <div class="text-center my-5">
+                    <h1 class="fw-bolder">질의응답 게시판 </h1>
+                    <p class="lead mb-0">이곳에서 궁금한 점을 물어보세요!</p>
+                </div>
+            </div>
+        </header>
+        <!-- Page content-->
+        <div class="container">
+            <div class="row">
+                <!-- Blog entries-->
+                {% if posts.exists %}
+                <div class="col-lg-8">
+                    <!-- Featured blog post-->
+                    {% for p in posts %}
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <div class="small text-muted">작성 시간: {{ p.created_at }}
+                            | 작성자: <a href="#">{{ p.author | upper }}</a> </div>
+                            <h2 class="card-title">{{ p.title }}</h2>
+                            <p class="card-text">{{ p.content | truncatewords:45 }}</p>
+                            <a class="btn btn-primary" href="{{ p.get_absolute_url }}"> 자세히보기 →</a>
+                        </div>
+                    </div>
+                    {% endfor %}
+                {% else %}
+                    <h3> 아직 게시물이 없습니다.</h3>
+                {% endif %}
+                    <!-- Pagination-->
 
-{% for p in posts %}
-     <hr/>
-     <h2><a href="{{ p.get_absolute_url }}">{{ p.title }}</a></h2>
-     <h4>{{ p.created_at }}</h4>
-     <p>{{ p.content  }}</p>
-{% endfor %}
+                    {% if user.is_authenticated %}
+                     <a class="btn btn-info btn-sm float-xl-end" href="/home/create_post/"
+                     role="button"><i class="fas fa-pen"></i>&nbsp;&nbsp;글 작성하기</a>
+                    {% endif %}
+                    <nav aria-label="Pagination">
+                        <hr class="my-0" />
+                        <ul class="pagination justify-content-center my-4">
+                            <li class="page-item disabled"><a class="page-link" href="#" tabindex="-1" aria-disabled="true">Newer</a></li>
+                            <li class="page-item active" aria-current="page"><a class="page-link" href="#!">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#!">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#!">3</a></li>
+                            <li class="page-item disabled"><a class="page-link" href="#!">...</a></li>
+                            <li class="page-item"><a class="page-link" href="#!">15</a></li>
+                            <li class="page-item"><a class="page-link" href="#!">Older</a></li>
+                        </ul>
+
+                    </nav>
+                </div>
+
+                <!-- Side widgets-->
+                <div class="col-lg-4">
+                    <!-- Search widget-->
+                    <div class="card mb-4">
+                        <div class="card-header">Search</div>
+                        <div class="card-body">
+                            <div class="input-group">
+                                <input class="form-control" type="text" placeholder="Enter search term..." aria-label="Enter search term..." aria-describedby="button-search" />
+                                <button class="btn btn-primary" id="button-search" type="button">Go!</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Side widget-->
+                    <div class="card mb-4">
+                        <div class="card-header">도움말</div>
+                        <div class="card-body"><h4>자세히 보기를 누르시면 글을 더 자세히 볼 수 있습니다</h4></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer-->
+        <footer class="py-5 bg-dark">
+            <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2023</p></div>
+        </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
         integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
