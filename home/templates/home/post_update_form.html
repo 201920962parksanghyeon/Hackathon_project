@@ -6,7 +6,7 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>포스트 작성창</title>
+    <title>포스트 수정창</title>
     <link rel="stylesheet" href="{% static 'home/bootstrap/bootstrap.min.css' %}" media="screen">
 </head>
 <div class="container">
@@ -81,8 +81,8 @@
  <form method="post" enctype="multipart/form-data">{% csrf_token %}
       {{ form | crispy }}
       <div id="div_id_tags_str">
-          <label for="id_tags_str"></label>
-          <input type="text" name="tags_str" id="id_tags_str" class="textinput textInput form-control">
+          <label for="id_tags_str">Tags:</label>
+          <input type="text" name="tags_str" id="id_tags_str" class="textinput textInput form-control" value="{{ tags_str_default }}">
       </div>
  </br>
     <button type="submit" class="btn btn-primary float-xl-end">작성 완료하기</button>

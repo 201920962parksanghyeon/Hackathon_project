@@ -8,6 +8,5 @@ urlpatterns = [
     path("home/", include('home.urls')),
     path('', include('one_pages.urls')),
     path('accounts/', include('allauth.urls')),
-
 ]
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
